@@ -1,0 +1,59 @@
+{
+    // tsconfig.json 是ts编译器的配置文件，ts编译器可以根据它的信息来对代码进行编译
+    /* 配置选项：
+        1. include 包含：用来指定哪些ts文件需要被编译。
+            路径：* 任意文件  ** 任意目录
+        2. exclude 不包含：不需要被编译的文件目录
+            默认值：["node_modules", "bower_components", "jspm_packages"]
+        3. extends 继承：定义被继承的配置文件
+            "extends": "./configs/base"  当前配置文件中会自动包含config目录下base.json中的所有配置信息  
+        4. files 指定被编译的具体文件。只有需要编译的文件少时，才会用到。
+            "files": [
+                "types.ts",
+                "core.ts"
+            ]
+
+        5. compilerOptions 编译选项：决定了怎么编译
+            子选项：
+                target  指定ts被编译成的ES版本。'es3', 'es5', 'es6', 'es2015', 'es2016', 'es2017', 'es2018', 'es2019', 'es2020', 'es2021', 'es2022'
+                module  指定要使用的模块化的规划。"CommonJS", "AMD", "System", "UMD", "ES6", "ES2015", "ES2020", "ESNext", "None", "ES2022", "Node16", "NodeNext"
+                lib     指定项目中要使用的库。"ES5", "ES6", "ES2015", "ES2015.Collection", "ES2015.Core", "ES2015.Generator", "ES2015.Iterable", "ES2015.Promise", "ES2015.Proxy", "ES2015.Reflect", "ES2015.Symbol.WellKnown", "ES2015.Symbol", "ES2016", "ES2016.Array.Include", "ES2017", "ES2017.Intl", "ES2017.Object", "ES2017.SharedMemory", "ES2017.String", "ES2017.TypedArrays", "ES2018", "ES2018.AsyncGenerator", "ES2018.AsyncIterable", "ES2018.Intl", "ES2018.Promise", "ES2018.Regexp", "ES2019", "ES2019.Array", "ES2019.Intl", "ES2019.Object", "ES2019.String", "ES2019.Symbol", "ES2020", "ES2020.BigInt", "ES2020.Promise", "ES2020.String", "ES2020.Symbol.WellKnown", "ESNext", "ESNext.Array", "ESNext.AsyncIterable", "ESNext.BigInt", "ESNext.Intl", "ESNext.Promise", "ESNext.String", "ESNext.Symbol", "DOM", "DOM.Iterable", "ScriptHost", "WebWorker", "WebWorker.ImportScripts", "Webworker.Iterable", "ES7", "ES2021", "ES2020.SharedMemory", "ES2020.Intl", "ES2021.Promise", "ES2021.String", "ES2021.WeakRef", "ESNext.WeakRef", "es2021.intl", "ES2022", "ES2022.Array", "ES2022.Error", "ES2022.Intl", "ES2022.Object", "ES2022.String"。
+                outDir  指定编译后js文件所在的目录。
+                outFile 将所有全局作用域的ts文件代码编译成一个js文件。如果使用了import引入，想合并多个模块的话，需要把module换成"amd" 和 "system"
+                allowJs 对js文件是否进行编译。默认false
+                checkJs 检查js代码是否符合语法规范，默认false。和allowJs配套使用全部设置成true，就会校验js的语法
+                removeComments 编译后是否移除注释。
+                noEmit  编译后是否生成编译后的文件。为true的话，编译后dist文件中不生成任何js文件
+                noEmitOnError 当有错误时，不生成编译后的文件。
+                alwaysStrict 设置编译后的文件是否使用严模式。为true的话编译后的js最上面会默认加上"use strict"。当js代码中有导入导出时，默认就进入严格模式了。
+                noImplicitAny 是否允许隐式的any类型。为true的话，当在ts中定义 function(a, b) {return a+b}，此时未定义类型，默认为any，如果该属性设置为true后，会进行报错提示；为false则不提示。
+                noImplicitThis 检测是否存在不明确类型的this。为true时。
+                strictNullChecks 严格检查是否存在空值。为true时。
+                strict 所有严格检查的总开关。一般写在最上面，设置为true就都开了，想关哪个再单独设置。
+    */
+    "include": [
+        "./src/**/*"   // src文件下的任意目录任意文件都会被编译
+    ],
+    "exclude": [
+        "./src/hello/**/*"
+    ],
+    "compilerOptions": {
+        "target": "es2015",
+        "module": "ES2015",
+        // "lib": ["ES6"],
+        "outDir": "./dist",
+        // "outFile": "./dist/app.js", 后续会结合打包工具使用
+        "allowJs": true,
+        "checkJs": true,
+        "removeComments": true,
+        "noEmit": false,
+        "noEmitOnError": true,
+        "strict": false,
+        "alwaysStrict": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        
+
+    }
+}
